@@ -4,7 +4,7 @@
     <div>
       <div class="todos">
         <div v-for="(todo, index) in todos" v-bind:key="index" class="todo">
-          {{todo}}
+          {{todo.title}}
         </div>
       </div>
     </div>
