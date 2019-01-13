@@ -1,16 +1,18 @@
 <template>
   <div class="hello">
-    
+    <h1>{{title}}</h1>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
-};
+  computed: mapState([
+    'title'
+  ])
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
