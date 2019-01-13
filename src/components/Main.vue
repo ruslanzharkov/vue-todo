@@ -1,6 +1,13 @@
 <template>
   <div class="hello">
     <h1>{{title}}</h1>
+    <div>
+      <ul>
+        <li v-for="(todo, index) in todos" v-bind:key="index">
+          {{todo}}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -10,7 +17,8 @@ import { mapState } from 'vuex';
 export default {
   name: 'HelloWorld',
   computed: mapState([
-    'title'
+    'title',
+    'todos'
   ])
 }
 </script>
