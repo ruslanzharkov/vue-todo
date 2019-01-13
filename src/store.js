@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    title: 'My custom title',
+    title: 'My ToDo',
     todos: [
       'Write some code',
       'Read about frontend best pratice',
