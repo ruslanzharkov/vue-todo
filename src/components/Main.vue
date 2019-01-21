@@ -21,29 +21,28 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      newTodo: ''
-    }
+      newTodo: '',
+    };
   },
   computed: mapState([
     'title',
-    'todos'
+    'todos',
   ]),
   methods: {
     ...mapMutations([
       'ADD_TODO',
     ]),
-    addTodo: function() {
-      let todo = {
+    addTodo() {
+      const todo = {
         title: this.newTodo,
-        completed: false
+        completed: false,
       };
 
       this.ADD_TODO(todo);
-      this.newTodo = ''
-    }
+      this.newTodo = '';
+    },
   },
-
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
