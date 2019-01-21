@@ -16,13 +16,13 @@ export default new Vuex.Store({
     ADD_TODO: (state, todo) => {
       state.todos.push(todo);
     },
-    REMOVE_LINK: (state, link) => {        
+    REMOVE_TODO: (state, link) => {        
       state.todos.splice(link, 1);
-    }
+    },
   },
   actions: {
-    removeTodo: (state, todo) => {
-      context.commit("REMOVE_LINK", todo);
-    }
+    removeTodo: (context, todo) => {
+      context.commit('REMOVE_TODO', todo);
+    },
   },
 });

@@ -5,6 +5,7 @@
       <div class="todos">
         <div v-for="(todo, index) in todos" v-bind:key="index" class="todo">
           {{todo.title}}
+          <button v-on:click="removeTodos(index)" class="rm">Remove</button>
         </div>
       </div>
       <form @submit.prevent="addTodo">
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 
 export default {
   name: 'HelloWorld',
@@ -30,7 +31,10 @@ export default {
   ]),
   methods: {
     ...mapMutations([
-      'ADD_TODO',
+      'addTodo',
+    ]),
+     ...mapActions([                  
+      'removeTodo'
     ]),
     addTodo() {
       const todo = {
@@ -38,9 +42,12 @@ export default {
         completed: false,
       };
 
-      this.ADD_TODO(todo);
+      this.addTodo(todo);
       this.newTodo = '';
     },
+    removeTodos: function(todo) {    
+      this.removeTodo(todo)
+    }
   },
 };
 </script>
