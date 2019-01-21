@@ -8,7 +8,7 @@
           <button v-on:click="removeTodos(index)" class="rm">Remove</button>
         </div>
       </div>
-      <form @submit.prevent="addTodo">
+      <form @submit.prevent="addTodos">
         <input type="text" class="todo-input" placeholder="Your todo here..." v-model="newTodo"/>
       </form>
     </div>
@@ -31,18 +31,18 @@ export default {
   ]),
   methods: {
     ...mapMutations([
-      'addTodo',
+      'ADD_TODO',
     ]),
      ...mapActions([                  
       'removeTodo'
     ]),
-    addTodo() {
+    addTodos() {
       const todo = {
         title: this.newTodo,
         completed: false,
       };
 
-      this.addTodo(todo);
+      this.ADD_TODO(todo);
       this.newTodo = '';
     },
     removeTodos: function(todo) {    
