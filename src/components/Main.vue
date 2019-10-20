@@ -8,8 +8,8 @@
         </label>
       </form>
       <div class="todos">
-        <div v-for="(todo, index) in todos" v-bind:key="index" class="todo">
-          <Todo v-bind:todo="todo" v-bind:index="index" @removeTodos="removeTodos(index)"/>
+        <div v-for="(todo, index) in todos" v-bind:key="index">
+          <Todo v-bind:todo="todo" v-bind:index="index" @removeTodos="removeTodos"/>
         </div>
       </div>
     </div>
@@ -74,13 +74,6 @@ h3 {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.todo {
-  flex: 1;
-  padding: 15px;
-  background-color: #E9E9E9;
-  margin-top: 10px;
 }
 
 .todo-input {

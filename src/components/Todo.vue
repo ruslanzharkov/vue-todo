@@ -1,7 +1,11 @@
 <template>
-  <div>
-    {{todo.title}}
-    <button v-on:click="removeTodo" class="rm">Remove</button>
+  <div class="todo">
+    <p>{{todo.title}}</p>
+    <img src="../assets/trash.svg"
+         alt="delete"
+         class="delete-icon"
+         v-on:click="removeTodo"
+    />
   </div>
 </template>
 
@@ -12,12 +16,25 @@ export default {
 
   methods: {
     removeTodo() {
-      this.$emit('removeTodos');
+      this.$emit('removeTodos', this.index);
     },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  .todo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    margin-top: 10px;
+  }
 
+  .delete-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
 </style>
