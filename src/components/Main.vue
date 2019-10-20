@@ -35,8 +35,8 @@ export default {
     ...mapMutations([
       'ADD_TODO',
     ]),
-     ...mapActions([
-      'removeTodo'
+    ...mapActions([
+      'removeTodo',
     ]),
     addTodos() {
       const todo = {
@@ -47,9 +47,9 @@ export default {
       this.ADD_TODO(todo);
       this.newTodo = '';
     },
-    removeTodos: function(todo) {
-      this.removeTodo(todo)
-    }
+    removeTodos(todo) {
+      this.removeTodo(todo);
+    },
   },
 };
 </script>
@@ -74,7 +74,7 @@ h3 {
   flex: 1;
   padding: 15px;
   background-color: #E9E9E9;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .todo-input {
