@@ -9,8 +9,7 @@
       </form>
       <div class="todos">
         <div v-for="(todo, index) in todos" v-bind:key="index" class="todo">
-          {{todo.title}}
-          <button v-on:click="removeTodos(index)" class="rm">Remove</button>
+          <Todo v-bind:todo="todo" v-bind:index="index" @removeTodos="removeTodos(index)"/>
         </div>
       </div>
     </div>
@@ -19,13 +18,18 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex';
+import Todo from './Todo.vue';
 
 export default {
   name: 'Main',
   data() {
     return {
+      idCount: 0,
       newTodo: '',
     };
+  },
+  components: {
+    Todo,
   },
   computed: mapState([
     'title',
@@ -40,12 +44,14 @@ export default {
     ]),
     addTodos() {
       const todo = {
+        id: this.idCount,
         title: this.newTodo,
         completed: false,
       };
 
       this.ADD_TODO(todo);
       this.newTodo = '';
+      this.idCount += 1;
     },
     removeTodos(todo) {
       this.removeTodo(todo);
