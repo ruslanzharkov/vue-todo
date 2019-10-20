@@ -2,15 +2,17 @@
   <div class="hello">
     <h1>{{title}}</h1>
     <div>
+      <form @submit.prevent="addTodos">
+        <label>
+          <input type="text" class="todo-input" placeholder="Your todo here..." v-model="newTodo"/>
+        </label>
+      </form>
       <div class="todos">
         <div v-for="(todo, index) in todos" v-bind:key="index" class="todo">
           {{todo.title}}
           <button v-on:click="removeTodos(index)" class="rm">Remove</button>
         </div>
       </div>
-      <form @submit.prevent="addTodos">
-        <input type="text" class="todo-input" placeholder="Your todo here..." v-model="newTodo"/>
-      </form>
     </div>
   </div>
 </template>
@@ -19,7 +21,7 @@
 import { mapState, mapMutations, mapActions } from 'vuex';
 
 export default {
-  name: 'HelloWorld',
+  name: 'Main',
   data() {
     return {
       newTodo: '',
@@ -33,7 +35,7 @@ export default {
     ...mapMutations([
       'ADD_TODO',
     ]),
-     ...mapActions([                  
+     ...mapActions([
       'removeTodo'
     ]),
     addTodos() {
@@ -45,7 +47,7 @@ export default {
       this.ADD_TODO(todo);
       this.newTodo = '';
     },
-    removeTodos: function(todo) {    
+    removeTodos: function(todo) {
       this.removeTodo(todo)
     }
   },
